@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mustang Specifications</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Lora', serif;
+            background: #fcfcfc;
+            min-height: 100vh;
+        }
+
+        /* NAVBAR STYLES */
+        .navbar {
+            position: fixed;
+            top: -10px;
+            width: 100%;
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(131, 124, 111, 0.689);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .logo {
+            height: 100px;
+            width: 115px;
+            filter: brightness(0) invert(1);
+            transition: transform 0.3s;
+            margin-left: 20px;
+        }
+        
+        .logo:hover {
+            transform: scale(1.1);
+        }
+        
+        .navbar ul {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex: 1;
+            justify-content: center;
+            max-width: 800px;
+        }
+        
+        .navbar a {
+            color: #FFFFFF;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .navbar a:hover {
+            color: #000000;
+        }
+        
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #D97B29;
+            transition: width 0.3s;
+        }
+        
+        .navbar a:hover::after {
+            width: 100%;
+        }
+
+        /* MAIN CONTENT */
+        .specs-container {
+            padding: 150px 5% 100px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 60px;
+            color: #333;
+            position: relative;
+        }
+
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: #D97B29;
+        }
+
+        /* SPECS GRID - 4 CARDS PER ROW */
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .spec-card {
+            background: rgba(255,255,255,0.9);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-top: 4px solid #D97B29;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .spec-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .spec-card h2 {
+            color: #333;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .spec-value {
+            font-size: 2.5rem;
+            color: #D97B29;
+            font-weight: bold;
+            margin: 15px 0;
+            line-height: 1;
+        }
+
+        .spec-card p {
+            color: #666;
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        /* RESPONSIVE ADJUSTMENTS */
+        @media (max-width: 1200px) {
+            .specs-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .specs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .specs-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .navbar ul {
+                gap: 20px;
+            }
+            
+            .logo {
+                height: 80px;
+                width: 90px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <img src="lofofinal.png" alt="Mustang Logo" class="logo">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="heritage.html">Heritage</a></li>
+            <li><a href="specs.html">Specs</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="testdrive.html">Test Drive</a></li>
+        </ul>
+    </nav>
+
+    <div class="specs-container">
+        <h1 class="page-title">Technical Specifications</h1>
+        
+        <div class="specs-grid">
+            <!-- Engine Specs -->
+            <div class="spec-card">
+                <h2>Engine</h2>
+                <div class="spec-value">5.0L V8</div>
+                <p>450 HP @ 7000 RPM</p>
+                <p>410 lb-ft Torque</p>
+            </div>
+            
+            <!-- Performance -->
+            <div class="spec-card">
+                <h2>Acceleration</h2>
+                <div class="spec-value">4.3s</div>
+                <p>0-60 MPH</p>
+                <p>Quarter Mile: 12.5s</p>
+            </div>
+            
+            <!-- Transmission -->
+            <div class="spec-card">
+                <h2>Transmission</h2>
+                <div class="spec-value">10-Speed</div>
+                <p>Automatic with</p>
+                <p>Paddle Shifters</p>
+            </div>
+            
+            <!-- Fuel Economy -->
+            <div class="spec-card">
+                <h2>Fuel Economy</h2>
+                <div class="spec-value">15/24 MPG</div>
+                <p>City/Highway</p>
+                <p>17.5 MPG Combined</p>
+            </div>
+            
+            <!-- Dimensions -->
+            <div class="spec-card">
+                <h2>Dimensions</h2>
+                <div class="spec-value">188.5"</div>
+                <p>Length</p>
+                <p>Width: 75.4"</p>
+            </div>
+            
+            <!-- Weight -->
+            <div class="spec-card">
+                <h2>Curb Weight</h2>
+                <div class="spec-value">3,705 lbs</div>
+                <p>With Manual</p>
+                <p>Transmission</p>
+            </div>
+            
+            <!-- Brakes -->
+            <div class="spec-card">
+                <h2>Braking</h2>
+                <div class="spec-value">60-0 MPH</div>
+                <p>107 ft</p>
+                <p>6-Piston Brembos</p>
+            </div>
+            
+            <!-- Top Speed -->
+            <div class="spec-card">
+                <h2>Top Speed</h2>
+                <div class="spec-value">155 MPH</div>
+                <p>Electronically</p>
+                <p>Limited</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

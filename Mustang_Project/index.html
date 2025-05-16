@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mustang Full Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fcfcfc;
+            overflow: hidden;
+            position: relative;
+            font-family: 'Lora', serif;
+        }
+
+        /* ===== IMPROVED NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: -10px;
+            width: 100%;
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(131, 124, 111, 0.689);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .logo {
+            height: 100px;
+            width: 115px;
+            filter: brightness(0) invert(1);
+            transition: transform 0.3s;
+            margin-left: 20px;
+        }
+        
+        .logo:hover {
+            transform: scale(1.1);
+        }
+        
+        .navbar ul {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex: 1;
+            justify-content: center;
+            max-width: 800px;
+        }
+        
+        .navbar a {
+            color: #FFFFFF;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .navbar a:hover {
+            color: #000000;
+        }
+        
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #D97B29;
+            transition: width 0.3s;
+        }
+        
+        .navbar a:hover::after {
+            width: 100%;
+        }
+
+        /* Faded "MUSTANG" text */
+        .faded-mustang {
+            font-size: 18vw;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.5rem;
+            user-select: none;
+            z-index: 1;
+            text-align: center;
+            position: absolute;
+            transform: scale(1, 2);
+            line-height: 0.7;
+            top: 30%;
+            
+            background: linear-gradient(to bottom, 
+                rgb(0, 0, 0) 0%, 
+                rgba(255,255,255,0) 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(56,35,24,1) 0%;
+        }
+
+        /* Mustang image with shadow */
+        .mustang-container {
+            position: absolute;
+            z-index: 2;
+            width: 80%;
+            bottom: -5%;
+            left: 50%;
+            transform: translateX(-50%);
+            max-height: 120vh;
+        }
+        
+        .mustang-img {
+            width: 100%;
+            height: auto;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            position: relative;
+            z-index: 2;
+            filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.5));
+
+        }
+
+        .mustang-img:hover {
+            transform: scale(1.05);
+            transition: transform 0.5s ease;
+        }
+        
+        .car-shadow {
+            position: absolute;
+            bottom: -25px;
+            left: 5%;
+            width: 90%;
+            height: 60px;
+            background: radial-gradient(ellipse at center, 
+                rgba(0,0,0,0.8) 0%, 
+                rgba(0,0,0,0) 80%);
+            border-radius: 50%;
+            filter: blur(10px);
+            z-index: 1;
+            transform: scaleY(0.5);
+            bottom: 230px;
+        }
+
+        /* Marquee Section */
+        .marquee-section {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 180px;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(2px);
+            overflow: hidden;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            border-top: 1px solid rgba(217, 123, 41, 0.3);
+        }
+
+        .marquee-container {
+            display: flex;
+            animation: scroll 25s linear infinite;
+            width: max-content;
+        }
+
+        .marquee-container:hover {
+            animation-play-state: paused;
+        }
+
+        .marquee-item {
+            height: 140px;
+            width: 220px;
+            margin: 0 20px;
+            flex-shrink: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(217, 123, 41, 0.2);
+        }
+
+        .marquee-item:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .marquee-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .marquee-item:hover img {
+            transform: scale(1.05);
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <img src="lofofinal.png" alt="Mustang Logo" class="logo">
+        <ul>
+            <li><a href="heritage.html">Heritage</a></li>
+            <li><a href="specs.html">Specs</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="testdrive.html">Test Drive</a></li>
+        </ul>
+    </nav>
+
+    <div class="faded-mustang">Mustang</div>
+    
+    <div class="mustang-container">
+        <div class="car-shadow"></div>
+       <a href="video.html"> <img src="mustang_mach1.png" alt="1969 Mustang" class="mustang-img"></a>
+    </div>
+
+    <!-- Marquee Section -->
+    <div class="marquee-section">
+        <div class="marquee-container">
+            <div class="marquee-item">
+                <img src="1.png" alt="Mustang Image 1">
+            </div>
+            <div class="marquee-item">
+                <img src="2.png" alt="Mustang Image 2">
+            </div>
+            <div class="marquee-item">
+                <img src="3.png" alt="Mustang Image 3">
+            </div>
+            <div class="marquee-item">
+                <img src="4.png" alt="Mustang Image 4">
+            </div>
+            <div class="marquee-item">
+                <img src="5.png" alt="Mustang Image 5">
+            </div>
+            <div class="marquee-item">
+                <img src="6.png" alt="Mustang Image 6">
+            </div>
+            <!-- Duplicate items for seamless looping -->
+            <div class="marquee-item">
+                <img src="1.png" alt="Mustang Image 1">
+            </div>
+            <div class="marquee-item">
+                <img src="2.png" alt="Mustang Image 2">
+            </div>
+            <div class="marquee-item">
+                <img src="3.png" alt="Mustang Image 3">
+            </div>
+            <div class="marquee-item">
+                <img src="4.png" alt="Mustang Image 4">
+            </div>
+            <div class="marquee-item">
+                <img src="5.png" alt="Mustang Image 5">
+            </div>
+            <div class="marquee-item">
+                <img src="6.png" alt="Mustang Image 6">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

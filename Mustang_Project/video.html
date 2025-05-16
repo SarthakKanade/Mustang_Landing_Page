@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mustang Experience</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+
+        #video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        #video-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: cover;
+            display: none; /* Hidden until button click */
+        }
+
+        #overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+            transition: opacity 1s;
+        }
+
+        #saddle-up-btn {
+            padding: 15px 40px;
+            font-size: 1.5rem;
+            background-color: rgba(217, 123, 41, 0.8);
+            color: white;
+            border: 2px solid #fff;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        #saddle-up-btn:hover {
+            background-color: rgba(217, 123, 41, 1);
+            transform: scale(1.05);
+        }
+
+        .title {
+            color: white;
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            #saddle-up-btn {
+                padding: 12px 30px;
+                font-size: 1.2rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div id="video-container">
+        <!-- Video element -->
+        <video id="video-bg" autoplay muted loop>
+            <source src="video.mp4" type="video/mp4">
+        </video>
+    </div>
+
+
+    <div id="overlay">
+        <h1 class="title">The 1969 Mustang Experience</h1>
+        <button id="saddle-up-btn">Saddle Up</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('video-bg');
+            const overlay = document.getElementById('overlay');
+            const btn = document.getElementById('saddle-up-btn');
+
+            // Button click handler
+            btn.addEventListener('click', function() {
+                // Show the video
+                video.style.display = 'block';
+                
+                // Play the video (must be muted for autoplay in most browsers)
+                video.play();
+                
+                // Fade out the overlay
+                overlay.style.opacity = '0';
+                
+                // Remove overlay after fade completes
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                }, 1000);
+            });
+
+            // Video ended handler
+            video.addEventListener('ended', function() {
+                // Redirect to new page after video ends
+                window.location.href = "index.html"; // Change to your target page
+            });
+
+            // Fallback for browsers that don't support autoplay
+            video.addEventListener('play', function() {
+                video.muted = true; // Ensure video stays muted
+            });
+        });
+    </script>
+</body>

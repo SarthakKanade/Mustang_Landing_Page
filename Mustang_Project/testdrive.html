@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Drive a Mustang</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fcfcfc;
+            overflow: hidden;
+            position: relative;
+            font-family: 'Lora', serif;
+            background-image: url(car7.png);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 40px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Lora', serif;
+        }
+        
+        button[type="submit"] {
+            background: #D97B29;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+        
+        button[type="submit"]:hover {
+            background: #c06922;
+            transform: scale(1.05);
+        }
+
+        /* ===== IMPROVED NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: -10px;
+            width: 100%;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(131, 124, 111, 0.689);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .logo {
+            height: 100px;
+            width: 115px;
+            filter: brightness(0) invert(1);
+            transition: transform 0.3s;
+            margin-left: 20px;
+        }
+        
+        .logo:hover {
+            transform: scale(1.1);
+        }
+        
+        .navbar ul {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex: 1;
+            justify-content: center;
+            max-width: 800px;
+        }
+        
+        .navbar ul a {
+            color: #FFFFFF;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 18px;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .navbar ul a:hover {
+            color: #000000;
+        }
+
+        .navbar ul a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #D97B29;
+            transition: width 0.3s;
+        }
+        
+        .navbar a:hover::after {
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html"><img src="logo.png" alt="Mustang Logo" class="logo"></a>
+        <ul>
+            <li><a href="main.html">Home</a></li>
+            <li><a href="heritage.html">Heritage</a></li>
+            <li><a href="specs.html">Specs</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="testdrive.html">Test Drive</a></li>
+        </ul>
+    </nav>
+
+    <div class="form-container">
+        <h1>Schedule Your Test Drive</h1>
+        <form>
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="model">Preferred Model</label>
+                <select id="model" required>
+                    <option value="">Select a model</option>
+                    <option value="Fastback">Mustang Fastback</option>
+                    <option value="gt">Mustang GT</option>
+                    <option value="mach1">Mustang Mach 1</option>
+                </select>
+            </div>
+            
+            <button type="submit">Schedule Now</button>
+        </form>
+    </div>
+</body>
+</html>
